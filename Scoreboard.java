@@ -15,6 +15,17 @@ public class Scoreboard {
 
     public String getScore()
     {
-        return teamOneScore + '-' + teamTwoScore + '-' + activeTeam;
+        return teamOneScore + "-" + teamTwoScore + "-" + activeTeam;
+    }
+
+    public void recordPlay(int score)
+    {
+        if(teamOne.equals(activeTeam)) teamOneScore += score;
+        if (teamTwo.equals(activeTeam)) teamTwoScore += score;
+        if(score == 0)
+        {
+            if(activeTeam.equals(teamOne)) activeTeam = teamTwo;
+            else if (activeTeam.equals(teamTwo)) activeTeam = teamOne; 
+        }
     }
 }
